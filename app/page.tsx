@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import EventsCalendar from "@/components/EventsCalendar";
 import MerchPreview from "@/components/MerchPreview";
 import About from "@/components/About";
 import Stats from "@/components/Stats";
@@ -25,6 +26,7 @@ export default async function Home() {
     <main>
       <Nav />
       <Hero />
+      <EventsCalendar />
       <MerchPreview />
       <About photos={photos} />
       <Stats photos={photos.slice(0, 10)} />
