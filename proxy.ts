@@ -14,6 +14,7 @@ const SECURITY_HEADERS: Record<string, string> = {
     "img-src 'self' https://pub-ac9f5d9fc73d402ca8032993e2b2761c.r2.dev data: blob:",
     "media-src 'self' https://pub-ac9f5d9fc73d402ca8032993e2b2761c.r2.dev",
     "connect-src 'self' https://api.cloudflare.com https://api.telegram.org",
+    "frame-src 'self' https://luma.com",
     "frame-ancestors 'none'",
   ].join("; "),
 };
