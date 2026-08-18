@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -27,8 +27,24 @@ const partners = [
   { name: "Bitget", logo: "/logos/bitget.svg" },
 ];
 
+const VISIBLE_COUNT = 12;
+
+function PartnerLogo({ p }: { p: (typeof partners)[number] }) {
+  return (
+    <div className="flex items-center justify-center h-10 md:h-14 group cursor-default">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={p.logo}
+        alt={p.name}
+        className="max-h-full max-w-full w-auto object-contain brightness-0 invert opacity-40 group-hover:opacity-80 transition-opacity duration-300"
+      />
+    </div>
+  );
+}
+
 export default function Partners() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     gsap.fromTo(
@@ -48,12 +64,13 @@ export default function Partners() {
     );
   }, []);
 
-  const doubled = [...partners, ...partners, ...partners, ...partners];
+  const visible = partners.slice(0, VISIBLE_COUNT);
+  const rest = partners.slice(VISIBLE_COUNT);
 
   return (
-    <section ref={sectionRef} className="bg-black py-24 md:py-40 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16">
-        <div className="partners-header" style={{ opacity: 0 }}>
+    <section ref={sectionRef} className="bg-black py-24 md:py-40">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="partners-header mb-16" style={{ opacity: 0 }}>
           <p
             className="text-white/30 uppercase text-sm tracking-widest mb-4"
             style={{ fontFamily: "Barlow Condensed, sans-serif", letterSpacing: "0.2em" }}
@@ -72,31 +89,41 @@ export default function Partners() {
             BUILT WITH THE BEST
           </h2>
         </div>
-      </div>
 
-      {/* Single marquee slider */}
-      <div className="overflow-hidden">
-        <div
-          className="flex items-center gap-12 md:gap-20 py-8"
-          style={{
-            animation: "marquee 40s linear infinite",
-            width: "max-content",
-          }}
-        >
-          {doubled.map((p, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 flex items-center justify-center h-8 md:h-12 max-w-[104px] md:max-w-[136px] group cursor-default"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={p.logo}
-                alt={p.name}
-                className="max-h-full max-w-full w-auto object-contain brightness-0 invert opacity-40 group-hover:opacity-80 transition-opacity duration-300"
-              />
-            </div>
+        {/* Static grid */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-x-8 gap-y-10 md:gap-x-10 md:gap-y-14">
+          {visible.map((p) => (
+            <PartnerLogo key={p.name} p={p} />
           ))}
         </div>
+
+        {rest.length > 0 && (
+          <>
+            <div
+              className={`grid transition-[grid-template-rows] duration-500 ease-out ${
+                expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+              }`}
+            >
+              <div className="overflow-hidden">
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-x-8 gap-y-10 md:gap-x-10 md:gap-y-14 pt-10 md:pt-14">
+                  {rest.map((p) => (
+                    <PartnerLogo key={p.name} p={p} />
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-center mt-12 md:mt-16">
+              <button
+                onClick={() => setExpanded((v) => !v)}
+                className="uppercase text-sm tracking-widest text-white/40 hover:text-white transition-colors duration-300"
+                style={{ fontFamily: "Barlow Condensed, sans-serif", letterSpacing: "0.15em" }}
+              >
+                {expanded ? "Show Less" : `View All Partners (${partners.length})`}
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
