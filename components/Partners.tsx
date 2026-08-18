@@ -18,6 +18,13 @@ const partners = [
   { name: "startup.ph", logo: "/logos/startup-ph.svg" },
   { name: "Kaskasan Buddies", logo: "/logos/kaskasan-buddies.svg" },
   { name: "FHMoms", logo: "/logos/fhmoms.svg" },
+  { name: "MBT", logo: "/logos/mbt.png" },
+  { name: "Pretty Huge Gym", logo: "/logos/pretty-huge-gym.png" },
+  { name: "Haraya Residences", logo: "/logos/haraya-residences.svg" },
+  { name: "Huawei", logo: "/logos/huawei.svg" },
+  { name: "DJI", logo: "/logos/dji.svg" },
+  { name: "Sun Life", logo: "/logos/sun-life.png" },
+  { name: "Bitget", logo: "/logos/bitget.svg" },
 ];
 
 export default function Partners() {
@@ -70,22 +77,23 @@ export default function Partners() {
       {/* Single marquee slider */}
       <div className="overflow-hidden">
         <div
-          className="flex items-center py-8"
+          className="flex items-center gap-12 md:gap-20 py-8"
           style={{
             animation: "marquee 40s linear infinite",
             width: "max-content",
           }}
         >
           {doubled.map((p, i) => (
-            <div key={i} className="flex-shrink-0 mx-8 md:mx-14 group cursor-default">
-              <div className="flex items-center justify-center w-32 h-12 md:w-44 md:h-14">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={p.logo}
-                  alt={p.name}
-                  className="h-8 md:h-12 w-auto object-contain brightness-0 invert opacity-40 group-hover:opacity-80 transition-opacity duration-300"
-                />
-              </div>
+            <div
+              key={i}
+              className="flex-shrink-0 flex items-center justify-center h-8 md:h-12 max-w-[104px] md:max-w-[136px] group cursor-default"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={p.logo}
+                alt={p.name}
+                className="max-h-full max-w-full w-auto object-contain brightness-0 invert opacity-40 group-hover:opacity-80 transition-opacity duration-300"
+              />
             </div>
           ))}
         </div>

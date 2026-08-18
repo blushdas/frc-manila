@@ -90,6 +90,19 @@ export default function Footer() {
           {/* Divider */}
           <div className="w-px h-8 bg-white/10" />
 
+          <a
+            href="https://foundersrc.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="uppercase text-sm tracking-widest text-white/40 hover:text-white transition-colors duration-300"
+            style={{ fontFamily: "Barlow Condensed, sans-serif", letterSpacing: "0.15em" }}
+          >
+            FOUNDERSRC.COM
+          </a>
+
+          {/* Divider */}
+          <div className="w-px h-8 bg-white/10" />
+
           <p
             className="text-white/20 text-xs uppercase tracking-widest text-center"
             style={{ fontFamily: "Barlow Condensed, sans-serif", letterSpacing: "0.15em" }}

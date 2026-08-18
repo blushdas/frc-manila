@@ -96,6 +96,7 @@ export default function Team() {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  style={{ filter: "brightness(1.04) contrast(1.02)" }}
                 />
                 <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors duration-300" />
               </div>
