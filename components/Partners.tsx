@@ -25,6 +25,7 @@ const partners = [
   { name: "DJI", logo: "/logos/dji.svg" },
   { name: "Sun Life", logo: "/logos/sun-life.png" },
   { name: "Bitget", logo: "/logos/bitget.svg" },
+  { name: "MotionRx", logo: "/logos/motionrx.png" },
 ];
 
 const VISIBLE_COUNT = 12;
